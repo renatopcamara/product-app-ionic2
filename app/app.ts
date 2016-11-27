@@ -3,12 +3,11 @@ import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
 import {CategoryService} from './providers/category-service/category-service'
-import {ProductService} from './providers/product-service/product-service'
-
+import {ProdutcService} from './providers/produtc-service/produtc-service'
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers:[CategoryService, ProductService]
+  providers:[CategoryService, ProdutcService]
 })
 export class MyApp {
   rootPage: any = HomePage;

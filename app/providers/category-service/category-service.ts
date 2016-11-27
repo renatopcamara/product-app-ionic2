@@ -23,5 +23,45 @@ export class CategoryService {
         });
       });
     }
-  
+
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      this.http.delete(this.baseUri + '/' + id)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+      });
+  }
+
+  insert(category) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return new Promise((resolve, reject) => {
+      this.http.post(this.baseUri, JSON.stringify(category), {headers: headers})
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+      });
+  }
+
+  update(category) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return new Promise((resolve, reject) => {
+      this.http.put(this.baseUri, JSON.stringify(category), {headers: headers})
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        });
+      });
+  }
+
 }
