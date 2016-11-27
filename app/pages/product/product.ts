@@ -1,15 +1,72 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Alert, Modal  } from 'ionic-angular';
+import {ProdutcService} from './../../providers/produtc-service/produtc-service';
+import {ProductModalPage} from './../product-modal/product-modal';
 
-/*
-  Generated class for the ProductPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/product/product.html',
 })
 export class ProductPage {
-  constructor(private nav: NavController) {}
+
+  products: Array<any>;
+
+  constructor(private nav: NavController, private productService: ProdutcService) {
+    this.findAll();
+  }
+
+  findAll() {
+    this.productService.findAll()
+    .then((products: Array<any>) => {
+      this.products = products;
+    }, (error) => {
+      console.log('Erro ao listar produto: ', error);
+    })
+  }
+
+  removeProduct(product) {
+    let alert = Alert.create({
+      title: 'Deletar Produto',
+      message: 'Deseja realmente deletar o produto \'' + product.nome + '\'?',
+      buttons: [
+        {text: 'Cancelar'},
+        {
+          text: 'Deletar',
+          handler: (data) => {
+            this.productService.delete(product.id)
+            .then((res) => {
+              if (res) {
+                this.findAll();
+              }
+            }, (error) => {
+              console.log('Erro ao deletar o produto',error);
+            });
+          }
+        }
+      ]
+    });
+    this.nav.present(alert);
+  }
+
+  addProduct() {
+    let modal = Modal.create(ProductModalPage);
+
+    modal.onDismiss(() => {
+      this.findAll();
+      });
+
+    this.nav.present(modal);
+  }
+
+  updateCategory(product){
+    let modal = Modal.create(ProductModalPage, {
+      product: product
+      });
+
+    modal.onDismiss(() => {
+      this.findAll();
+      });
+
+    this.nav.present(modal);
+  }
+
 }
