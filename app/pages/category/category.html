@@ -5,19 +5,21 @@
 
 <ion-content padding >
 
-  <ion-list *ngFor="let c of categories">
-    <ion-item-sliding>
+  <ion-list>
+    <ion-item-sliding  *ngFor="let c of categories">
       <ion-item>
         {{ c.nome }}
       </ion-item>
+
       <ion-item-options>
-        <button primary>
+        <button primary (click)="updateCategory(c)">
           <ion-icon name="create"></ion-icon>
         </button>
         <button danger (click)="removeCategory(c)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>
+
     </ion-item-sliding>
   </ion-list>
 

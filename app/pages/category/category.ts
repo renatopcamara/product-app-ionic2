@@ -52,7 +52,19 @@ export class CategoryPage {
 
     modal.onDismiss(() => {
       this.findAll();
-    })
+      });
+
+    this.nav.present(modal);
+  }
+
+  updateCategory(category){
+    let modal = Modal.create(CategoryModalPage, {
+      category: category
+      });
+
+    modal.onDismiss(() => {
+      this.findAll();
+      });
 
     this.nav.present(modal);
   }
