@@ -19,7 +19,7 @@ export class ProductModalPage {
         this.categories = categories;
       }, (error) => {
         this.categories = [];
-        console.log('Erro ao buscar categorias', error);
+        console.log('Erro ao buscar produto', error);
       });
   }
 
