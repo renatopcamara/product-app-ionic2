@@ -57,7 +57,7 @@ export class ProductPage {
     this.nav.present(modal);
   }
 
-  updateCategory(product){
+  updateProduct(product){
     let modal = Modal.create(ProductModalPage, {
       product: product
       });

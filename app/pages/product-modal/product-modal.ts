@@ -19,7 +19,7 @@ export class ProductModalPage {
         this.categories = categories;
       }, (error) => {
         this.categories = [];
-        console.log('Erro ao buscar produto', error);
+        console.log('Erro ao buscar categorias', error);
       });
   }
 
@@ -37,7 +37,7 @@ export class ProductModalPage {
           this.view.dismiss();
         }
       }, (error) => {
-        console.log('Erro ao atualizar de Produto', Error);
+        console.log('Erro ao atualizar de Produto', error);
       });
     } else {
       this.productService.insert(this.product)
@@ -46,7 +46,8 @@ export class ProductModalPage {
           this.view.dismiss();
         }
       }, (error) => {
-        console.log('Erro ao atualizar de Produto', Error);
+        console.log('Erro ao atualizar o Produto', error);
+        console.log('Erro no else', this.product);
       });
 
     }

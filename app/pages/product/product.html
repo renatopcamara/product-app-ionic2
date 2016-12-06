@@ -9,11 +9,11 @@
     <ion-item-sliding  *ngFor="let p of products">
       <ion-item>
         <span item-left>{{ p.nome }}</span>
-        <span item-right>{{ p.preco | currency:'BRL':true }}</span>
+        <span item-right>{{ p.preco | currency:'BRL':true:'1.2' }}</span>
       </ion-item>
 
       <ion-item-options>
-        <button primary (click)="updateproduct(p)">
+        <button primary (click)="updateProduct(p)">
           <ion-icon name="create"></ion-icon>
         </button>
         <button danger (click)="removeProduct(p)">
