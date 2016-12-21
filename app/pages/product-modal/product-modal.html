@@ -13,14 +13,17 @@
 <ion-content padding class="product-modal">
 
   <ion-list>
+
     <ion-item>
       <ion-label floating>Nome</ion-label>
-      <ion-input> [(ngModel)]="product.nome"</ion-input>
+      <ion-input [(ngModel)]="product.nome"></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-label floating>Preço</ion-label>
       <ion-input [(ngModel)]="product.preco" type="number"></ion-input>
     </ion-item>
+
     <ion-item>
        <ion-label floating>Categoria</ion-label>
        <ion-select [(ngModel)]="product.categoria">

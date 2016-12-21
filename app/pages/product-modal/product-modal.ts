@@ -46,7 +46,7 @@ export class ProductModalPage {
           this.view.dismiss();
         }
       }, (error) => {
-        console.log('Erro ao atualizar o Produto', error);
+        console.log('Erro ao inserir o Produto', error);
         console.log('Erro no else', this.product);
       });
 
